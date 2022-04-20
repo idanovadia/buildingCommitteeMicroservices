@@ -63,6 +63,25 @@ services:
     cap_add:
       - SYS_NICE
 
+  events-service:
+    build: "./events-service"
+    depends_on:
+      - events-service-db
+    environment:
+      - DB_URI=mysql://root:password@events-service-db/db?charset=UTF8
+    volumes:
+      - ./events-service:/opt/app
+
+  events-service-db:
+    environment:
+      - MYSQL_ROOT_PASSWORD=password
+      - MYSQL_DATABASE=db
+    image: mysql:8.0
+    ports:
+      - 0.0.0.0:7203:3306
+    cap_add:
+      - SYS_NICE
+
 networks:
   rmnet:
     driver: bridge
