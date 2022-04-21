@@ -4,9 +4,7 @@ import express from 'express';
 
 import accessEnv from "#root/helpers/accessEnv";
 
-import setupRoutes from "./routes";
-
-const PORT = accessEnv("PORT",7100);
+const PORT = accessEnv("PORT",7102);
 
 const app = express();
 
@@ -18,8 +16,6 @@ app.use(cors({
     credentials: true
 }));
 
-setupRoutes(app);
-
 app.listen(PORT, "0.0.0.0", () => {
-    console.info(`Payments service listening on ${PORT}`);
+    console.info(`Expenses service listening on ${PORT}`);
 });
