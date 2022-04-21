@@ -6,6 +6,8 @@ services:
       - payments-service-db
     environment:
       - DB_URI=mysql://root:password@payments-service-db/db?charset=UTF8
+    ports:
+      - 7100:7100
     volumes:
       - ./payments-service:/opt/app
     networks:
@@ -31,6 +33,8 @@ services:
       - users-service-db
     environment:
       - DB_URI=mysql://root:password@users-service-db/db?charset=UTF8
+    ports:
+      - 7101:7101
     volumes:
       - ./users-service:/opt/app
 
@@ -50,6 +54,8 @@ services:
       - expenses-service-db
     environment:
       - DB_URI=mysql://root:password@expenses-service-db/db?charset=UTF8
+    ports:
+      - 7102:7102
     volumes:
       - ./expenses-service:/opt/app
 
@@ -69,6 +75,8 @@ services:
       - events-service-db
     environment:
       - DB_URI=mysql://root:password@events-service-db/db?charset=UTF8
+    ports:
+      - 7103:7103
     volumes:
       - ./events-service:/opt/app
 
