@@ -7,6 +7,16 @@ const typeDefs = gql`
         description: String!
     }
 
+    type Mutation {
+        createPayment(
+            amount: Int!
+            description: String!
+            eventID: Int!
+            userID: Int!
+            statusID: Int!
+        ): Payment!
+    }
+
     type Query {
         payments : [Payment!]!
     }
