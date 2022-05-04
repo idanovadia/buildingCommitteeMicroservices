@@ -7,6 +7,14 @@ const typeDefs = gql`
         description: String!
     }
 
+    input Address{
+        street: String!
+        buildingNumber: String!
+        apartmentNumber: String
+        country: String!
+        city: String!
+    }
+
     type Mutation {
         createPayment(
             amount: Int!
@@ -20,11 +28,11 @@ const typeDefs = gql`
             firstName: String!
             lastName: String!
             phone: String!
-            addressID: ID!
             password: String!
             email: String!
             username: String!
             groupID: ID!
+            address: Address!
         ): String
     }
 

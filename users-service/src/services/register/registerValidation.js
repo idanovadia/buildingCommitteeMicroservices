@@ -14,17 +14,17 @@ export const validateUserRegister = async (user) => {
         isPasswordValid(user.password) &&
         validateEmail(user.email) &&
         await dbFunctions(
-            {username: user.username,groupID: user.groupID,addressID: user.addressID}
+            {username: user.username,groupID: user.groupID}
         )
     ) return true;
     return false;
 }
 
-const dbFunctions = async ({username,groupID,addressID}) => {
+const dbFunctions = async ({username,groupID}) => {
     return await Promise.all([
         isUserNameUnique(username),
-        isGroupIDValid(groupID),
-        isAddressIdExist(addressID)
+        isGroupIDValid(groupID)
+        // isAddressIdExist(addressID)
     ]).then((values) => {
         console.log(values);
         return values.reduce((res, cur) => res && cur, true);

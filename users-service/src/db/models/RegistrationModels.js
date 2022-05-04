@@ -17,7 +17,7 @@ User.init({
     },
     addressID: {
         allowNull: false,
-        type: DataTypes.INTEGER.UNSIGNED
+        type: DataTypes.UUID
     },
     password:{
         allowNull: false,
@@ -33,7 +33,7 @@ User.init({
     },
     groupID: {
         allowNull: false,
-        type: DataTypes.INTEGER.UNSIGNED
+        type: DataTypes.UUID
     }
 },{
     modelName: "user",
