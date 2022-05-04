@@ -1,5 +1,17 @@
 version: '3'
 services:
+  api-gateway:
+    build: "./api-gateway"
+    depends_on:
+      - payments-service
+      - users-service
+      - expenses-service
+      - events-service
+    ports:
+      - 7000:7000
+    volumes:
+      - ./api-gateway:/opt/app
+
   payments-service:
     build: "./payments-service"
     depends_on:
@@ -10,8 +22,6 @@ services:
       - 7100:7100
     volumes:
       - ./payments-service:/opt/app
-    networks:
-      - rmnet
 
   payments-service-db:
     image: mysql:8.0
@@ -24,8 +34,6 @@ services:
       - 0.0.0.0:7200:3306
     cap_add:
       - SYS_NICE
-    networks:
-      - rmnet
 
   users-service:
     build: "./users-service"
@@ -89,7 +97,3 @@ services:
       - 0.0.0.0:7203:3306
     cap_add:
       - SYS_NICE
-
-networks:
-  rmnet:
-    driver: bridge
