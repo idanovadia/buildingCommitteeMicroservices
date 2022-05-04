@@ -29,6 +29,10 @@ module.exports.up = (queryInterface,DataTypes) => {
             allowNull: false,
             type: DataTypes.STRING
         },
+        username: {
+            allowNull: false,
+            type: DataTypes.STRING
+        },
         groupID: {
             allowNull: false,
             type: DataTypes.INTEGER.UNSIGNED

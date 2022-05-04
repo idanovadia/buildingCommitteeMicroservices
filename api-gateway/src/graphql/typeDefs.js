@@ -15,6 +15,17 @@ const typeDefs = gql`
             userID: Int!
             statusID: Int!
         ): Payment!
+
+        createUser(
+            firstName: String!
+            lastName: String!
+            phone: String!
+            addressID: ID!
+            password: String!
+            email: String!
+            username: String!
+            groupID: ID!
+        ): String
     }
 
     type Query {
