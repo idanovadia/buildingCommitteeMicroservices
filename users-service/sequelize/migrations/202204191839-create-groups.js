@@ -15,11 +15,11 @@ module.exports.up = (queryInterface,DataTypes) => {
         },
         addressID: {
             allowNull: false,
-            type: DataTypes.INTEGER.UNSIGNED
+            type: DataTypes.UUID
         },
         managerID: {
             allowNull: false,
-            type: DataTypes.INTEGER.UNSIGNED
+            type: DataTypes.UUID
         },
         createdAt: {
             allowNull: false,
