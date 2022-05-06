@@ -14,7 +14,7 @@ module.exports.up = (queryInterface,DataTypes) => {
             type: DataTypes.INTEGER
         },
         apartmentNumber: {
-            allowNull: false,
+            allowNull: true,
             type: DataTypes.INTEGER
         },
         country: {

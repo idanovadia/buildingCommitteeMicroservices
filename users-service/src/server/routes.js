@@ -1,5 +1,5 @@
 // import { User } from "../db/models/RegistrationModels";
-import {register} from "../services/register/register.js"
+import {register, registerManager, registerUser} from "../services/register/register.js"
 const setupRoutes = app => {
 
     // app.get("/userDetails", async (req,res,next) => {
@@ -43,8 +43,21 @@ const setupRoutes = app => {
         console.log("route register");
         console.log(req.body);
         try {
-            await register(req.body.user);
+            await registerUser(req.body.user);
             return res.json("User successfully registered").status(201);
+        }catch(err){
+            console.log("error register route : " + err);
+            return res.json(`${err}`).status(500);
+        }
+    });
+
+    app.post("/manager/register", async (req,res,next) => {
+        console.log("route register");
+        console.log(req.body);
+        const manager = req.body.manager;
+        try {
+            await registerManager(manager);
+            return res.json("Manager successfully registered").status(201);
         }catch(err){
             console.log("error register route : " + err);
             return res.json(`${err}`).status(500);

@@ -9,17 +9,13 @@ module.exports.up = (queryInterface,DataTypes) => {
             allowNull: false,
             type: DataTypes.STRING
         },
-        link: {
-            allowNull: false,
-            type: DataTypes.STRING
-        },
         addressID: {
             allowNull: false,
-            type: DataTypes.INTEGER.UNSIGNED
+            type: DataTypes.UUID
         },
         managerID: {
             allowNull: false,
-            type: DataTypes.INTEGER.UNSIGNED
+            type: DataTypes.UUID
         },
         createdAt: {
             allowNull: false,

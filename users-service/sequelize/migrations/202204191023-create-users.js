@@ -19,7 +19,7 @@ module.exports.up = (queryInterface,DataTypes) => {
         },
         addressID: {
             allowNull: false,
-            type: DataTypes.INTEGER.UNSIGNED
+            type: DataTypes.UUID
         },
         password:{
             allowNull: false,
@@ -35,7 +35,7 @@ module.exports.up = (queryInterface,DataTypes) => {
         },
         groupID: {
             allowNull: false,
-            type: DataTypes.INTEGER.UNSIGNED
+            type: DataTypes.UUID
         },
         createdAt: {
             allowNull: false,
