@@ -1,6 +1,5 @@
 import { User } from "../../db/models/RegistrationModels.js";
 import { Group } from "../../db/models/GroupModels.js";
-import { Address } from "../../db/models/AddressModels.js";
 
 
 const passwordRegex = "^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$";

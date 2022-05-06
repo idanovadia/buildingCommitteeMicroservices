@@ -7,12 +7,33 @@ const typeDefs = gql`
         description: String!
     }
 
-    input Address{
+    input Address {
         street: String!
         buildingNumber: String!
         apartmentNumber: String
         country: String!
         city: String!
+    }
+
+    input Group {
+        name: String!
+        address: Address!
+    }
+
+    input User {
+        firstName: String!
+        lastName: String!
+        phone: String!
+        password: String!
+        email: String!
+        username: String!
+        groupID: ID
+        address: Address!
+    }
+
+    input Manager {
+        user: User!
+        group: Group!
     }
 
     type Mutation {
@@ -25,14 +46,11 @@ const typeDefs = gql`
         ): Payment!
 
         createUser(
-            firstName: String!
-            lastName: String!
-            phone: String!
-            password: String!
-            email: String!
-            username: String!
-            groupID: ID!
-            address: Address!
+            user: User!
+        ): String
+
+        createManager(
+            manager: Manager!
         ): String
     }
 

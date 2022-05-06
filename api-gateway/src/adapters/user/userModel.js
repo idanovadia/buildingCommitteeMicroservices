@@ -1,5 +1,5 @@
 export var User = class { 
-    constructor(firstName,lastName,phone,password,email,username,groupID,address) { 
+    constructor({firstName,lastName,phone,password,email,username,groupID = null,address}) { 
        this.firstName = firstName;
        this.lastName = lastName;
        this.phone = phone;

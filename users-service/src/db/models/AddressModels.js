@@ -12,7 +12,7 @@ Address.init({
         type: DataTypes.INTEGER
     },
     apartmentNumber: {
-        allowNull: false,
+        allowNull: true,
         type: DataTypes.INTEGER
     },
     country: {

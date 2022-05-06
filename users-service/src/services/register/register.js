@@ -2,8 +2,23 @@ import generateUUID from "../../helpers/generateUUID.js";
 import { User } from "#root/db/models/RegistrationModels";
 import { Address } from "../../db/models/AddressModels.js";
 import {validateUserRegister} from "./registerValidation.js";
+import { createAddress } from "../address/addAddress.js";
+import { createGroup } from "../group/addGroup.js";
 
-export const register = async (user) => {
+export const registerUser = async(user) => {
+    user["id"] = generateUUID();
+    await register(user);
+}
+
+export const registerManager = async(manager) => {
+    var { group, user  } = manager;
+    group["id"] = generateUUID();
+    user["id"] = group["managerID"] = generateUUID();
+    await createGroup(group);
+    await register({...user, groupID: group.id});
+}
+
+const register = async (user) => {
     console.log("service register");
     const validation = await validateUserRegister(user);
     console.log("validation "  + JSON.stringify(validation));
@@ -13,19 +28,16 @@ export const register = async (user) => {
 
 const saveUserInfo = async(user) => {
     const { address, ...myUser } = user;
-    const addressID = await saveAddress(address);
+    const addressID = await createAddress(address);
     await saveUser( {...myUser, addressID : addressID });
 }
 
-const saveAddress = async(address) => {
-    address["id"] = generateUUID();
-    await Address.create(address);
-    return address.id;
+const saveUser = async(user) => {
+    await save(user);
+    return user.id;
 }
 
-const saveUser = async(user) => {
-    user["id"] = generateUUID();
+const save = async(user) => {
     await User.create(user);
-    return user.id;
 }
 

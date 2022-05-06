@@ -7,10 +7,6 @@ Group.init({
         allowNull: false,
         type: DataTypes.STRING
     },
-    link: {
-        allowNull: false,
-        type: DataTypes.STRING
-    },
     addressID: {
         allowNull: false,
         type: DataTypes.INTEGER.UNSIGNED
