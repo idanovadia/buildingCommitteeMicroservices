@@ -1,5 +1,6 @@
 import generateUUID from "../../helpers/generateUUID.js";
 import { User } from "#root/db/models/RegistrationModels";
+import { Address } from "../../db/models/AddressModels.js";
 import {validateUserRegister} from "./registerValidation.js";
 import { createAddress } from "../address/addAddress.js";
 import { createGroup } from "../group/addGroup.js";
