@@ -42,7 +42,7 @@ const typeDefs = gql`
 
     input UserLogin {
         username: String!
-        password String!
+        password: String!
     }
 
     type Mutation {
@@ -65,7 +65,7 @@ const typeDefs = gql`
 
     type Query {
         payments: [Payment!]!
-        login(UserLogin!): UserSession!
+        login(userLogin: UserLogin!): UserSession!
     }
 `;
 

@@ -68,10 +68,10 @@ const setupRoutes = app => {
     app.post("/login", async (req,res,next) => {
         console.log("route login");
         console.log(req.body);
-        const user = req.body.user;
+        const user = req.body.userLogin;
         try {
-            await login(user);
-            return res.json().status(201);
+            const token = await login(user);
+            return res.json({token}).status(200);
         }catch(err){
             console.log("error login route : " + err);
             return res.json(`${err}`).status(500);

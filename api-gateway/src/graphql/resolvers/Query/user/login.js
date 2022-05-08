@@ -1,7 +1,7 @@
 import UserService from "../../../../adapters/user/userService.js";
 
-const loginResolver = async () => {
-    return await UserService.login();
+const loginResolver = async ( obj, userLogin) => {
+    return await UserService.login(userLogin);
 };
 
 export default loginResolver;

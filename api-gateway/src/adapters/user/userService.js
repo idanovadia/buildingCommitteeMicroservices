@@ -21,10 +21,10 @@ export default class UserService {
         return body;
     }
 
-    static async login(UserLogin) {
+    static async login(userLogin) {
         console.log("UserLogin");
         const body = await got.post(
-            `${USER_SERVICE_URI}/login`,{json: {UserLogin}}
+            `${USER_SERVICE_URI}/login`,{json: userLogin}
         ).json();
         return body;
     }
