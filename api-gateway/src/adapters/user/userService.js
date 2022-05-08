@@ -20,4 +20,12 @@ export default class UserService {
         ).json();
         return body;
     }
+
+    static async login(UserLogin) {
+        console.log("UserLogin");
+        const body = await got.post(
+            `${USER_SERVICE_URI}/login`,{json: {UserLogin}}
+        ).json();
+        return body;
+    }
 }
