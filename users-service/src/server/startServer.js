@@ -6,6 +6,9 @@ import accessEnv from "#root/helpers/accessEnv";
 
 import setupRoutes from "./routes";
 
+const dotenv = require("dotenv");
+dotenv.config();
+
 const PORT = accessEnv("PORT",7101);
 
 const app = express();
