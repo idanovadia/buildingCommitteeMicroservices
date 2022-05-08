@@ -6,6 +6,10 @@ const typeDefs = gql`
         amount: Int!
         description: String!
     }
+    
+    type UserSession {
+        token: String!
+    }
 
     input Address {
         street: String!
@@ -36,6 +40,11 @@ const typeDefs = gql`
         group: Group!
     }
 
+    input UserLogin {
+        username: String!
+        password String!
+    }
+
     type Mutation {
         createPayment(
             amount: Int!
@@ -55,7 +64,8 @@ const typeDefs = gql`
     }
 
     type Query {
-        payments : [Payment!]!
+        payments: [Payment!]!
+        login(UserLogin!): UserSession!
     }
 `;
 
