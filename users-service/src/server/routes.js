@@ -1,4 +1,5 @@
 // import { User } from "../db/models/RegistrationModels";
+import login from "../services/login/loginService.js";
 import {register, registerManager, registerUser} from "../services/register/register.js"
 const setupRoutes = app => {
 
@@ -60,6 +61,19 @@ const setupRoutes = app => {
             return res.json("Manager successfully registered").status(201);
         }catch(err){
             console.log("error register route : " + err);
+            return res.json(`${err}`).status(500);
+        }
+    });
+
+    app.post("/login", async (req,res,next) => {
+        console.log("route login");
+        console.log(req.body);
+        const user = req.body.user;
+        try {
+            await login(user);
+            return res.json().status(201);
+        }catch(err){
+            console.log("error login route : " + err);
             return res.json(`${err}`).status(500);
         }
     });
