@@ -1,11 +1,12 @@
-import { checkLoginPassword, loginInputValidation } from "./loginValidation";
+import { checkLoginPassword, loginInputValidation, searchUser } from "./loginValidation";
 // const CryptoJS = require("crypto-js");
 const jwt = require("jsonwebtoken");
 
 const login = async(user) => {
+    console.log("login Service")
     if( await loginInputValidation(user)) {
-        const dbUser = searchUser(user);
-        if(await checkLoginPassword(user))
+        const dbUser = await searchUser(user);
+        if(await checkLoginPassword(user, dbUser))
         {
             return createToken(dbUser);
         }
@@ -14,16 +15,16 @@ const login = async(user) => {
 }
 
 const createToken = (user) => {
+    console.log("createToken");
+    const userData = user.dataValues;
     const accessToken = jwt.sign(
     {
-        id: user.id,
-        isManager: user.isAdmin,
+        id: userData.id,
     },
     process.env.JWT_SEC,
     {expiresIn:"3d"}
     );
-    res.status(200).json({accessToken});
-    return;
+    return accessToken;
 }
 
 export default login;
