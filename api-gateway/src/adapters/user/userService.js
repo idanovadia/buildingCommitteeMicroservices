@@ -28,4 +28,12 @@ export default class UserService {
         ).json();
         return body;
     }
+
+    static async userDetails() {
+        console.log("userDetails");
+        const body = await got.get(
+            `${USER_SERVICE_URI}/myDetails`
+        ).json();
+        return body;
+    }
 }

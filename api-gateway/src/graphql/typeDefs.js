@@ -11,6 +11,18 @@ const typeDefs = gql`
         token: String!
     }
 
+    type UserDetails {
+        firstName: String!
+        lastName: String!
+        phone: String!
+        password: String!
+        email: String!
+        username: String!
+        groupID: ID!
+        groupName: String!
+        address: Address!
+    }
+
     input Address {
         street: String!
         buildingNumber: String!
@@ -66,6 +78,7 @@ const typeDefs = gql`
     type Query {
         payments: [Payment!]!
         login(userLogin: UserLogin!): UserSession!
+        userDetails: UserDetails!
     }
 `;
 
