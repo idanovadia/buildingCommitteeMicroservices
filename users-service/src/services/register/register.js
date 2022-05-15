@@ -21,7 +21,6 @@ export const registerManager = async(manager) => {
 const register = async (user) => {
     console.log("service register");
     const validation = await validateUserRegister(user);
-    console.log("validation "  + JSON.stringify(validation));
     if(!validation) throw new Error("validate User Register - Error");
     await saveUserInfo(user);
 };

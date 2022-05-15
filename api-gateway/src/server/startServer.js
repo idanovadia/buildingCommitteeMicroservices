@@ -2,27 +2,22 @@ import { ApolloServer } from 'apollo-server-express';
 import cookieParser from 'cookie-parser';
 import cors from 'cors';
 import express from 'express';
-
+import dotenv from 'dotenv';
+dotenv.config();
 import resolvers from "../graphql/resolvers/index.js";
 import typeDefs from "../graphql/typeDefs.js";
 import accessEnv from "../helpers/accessEnv.js";
-import verifyToken from "../helpers/verifyToken.js";
+// import { applyMiddleware } from 'graphql-middleware';
 
 const startApolloServer = async (typeDefs, resolvers) => {
 
     const PORT = accessEnv("PORT",7000);
-    // Same ApolloServer initialization as before
-
-    const getUser = token => {
-      console.log(token);
-      if(!token) return null;
-      return verifyToken(token);
-    };
-
+    // Same ApolloServer initialization as before   
+    
     const server = new ApolloServer({ 
       typeDefs,
       resolvers,
-      context: ({ req }) => ({ user: () => getUser(req.headers.authorization) })
+      context: ( {req, res} ) => { return { req, res } }
     });
   
     // Required logic for integrating with Express
