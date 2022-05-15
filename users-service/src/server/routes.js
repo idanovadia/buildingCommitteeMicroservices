@@ -83,7 +83,6 @@ const setupRoutes = app => {
         console.log("route myDetails");
         try {
             const UserDetails = await getUserDetails({userID: req.params.userId})
-            console.log(UserDetails);
             return res.json(UserDetails).status(200);
         }catch(err){
             console.log("error myDetails route : " + err);

@@ -31,7 +31,6 @@ export default class UserService {
 
     static async userDetails({userId}) {
         console.log("userDetails");
-        console.log(userId);
         const body = await got.get(
             `${USER_SERVICE_URI}/myDetails/${userId}`
         ).json();
