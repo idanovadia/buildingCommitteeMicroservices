@@ -29,10 +29,11 @@ export default class UserService {
         return body;
     }
 
-    static async userDetails() {
+    static async userDetails({userId}) {
         console.log("userDetails");
+        console.log(userId);
         const body = await got.get(
-            `${USER_SERVICE_URI}/myDetails`
+            `${USER_SERVICE_URI}/myDetails/${userId}`
         ).json();
         return body;
     }

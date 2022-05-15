@@ -1,6 +1,7 @@
 // import { User } from "../db/models/RegistrationModels";
 import login from "../services/login/loginService.js";
-import {register, registerManager, registerUser} from "../services/register/register.js"
+import {registerManager, registerUser} from "../services/register/register.js"
+import { getUserDetails } from "../services/userDetails/userDetails.js";
 const setupRoutes = app => {
 
     // app.get("/userDetails", async (req,res,next) => {
@@ -77,6 +78,18 @@ const setupRoutes = app => {
             return res.json(`${err}`).status(500);
         }
     });
+
+    app.get("/myDetails/:userId", async (req,res,next) => {
+        console.log("route myDetails");
+        try {
+            const UserDetails = await getUserDetails({userID: req.params.userId})
+            console.log(UserDetails);
+            return res.json(UserDetails).status(200);
+        }catch(err){
+            console.log("error myDetails route : " + err);
+            return res.json(`${err}`).status(500);
+        }
+    })
 }
 
 export default setupRoutes;

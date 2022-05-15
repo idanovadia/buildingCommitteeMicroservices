@@ -20,7 +20,15 @@ const typeDefs = gql`
         username: String!
         groupID: ID!
         groupName: String!
-        address: Address!
+        address: UserAddress!
+    }
+
+    type UserAddress {
+        street: String!
+        buildingNumber: String!
+        apartmentNumber: String!
+        country: String!
+        city: String!
     }
 
     input Address {

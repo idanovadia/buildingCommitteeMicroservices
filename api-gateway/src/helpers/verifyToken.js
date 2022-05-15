@@ -1,20 +1,31 @@
 import jwt from "jsonwebtoken";
+import { ApolloError } from 'apollo-server-errors';
 
-const verifyToken = (token) => {
-    const authHeader =  token;
-    console.log(authHeader);
+
+const verifyToken = (authHeader) => {
     if(authHeader){
         const token = authHeader.split(" ")[1];
-        return jwt.verify(token,process.env.JWT_SEC,(err,user) => {
-            if(err) throw new Error("token not valid");
-            return user;
+        console.log(token);
+        return jwt.verify(token,process.env.JWT_SEC,(err,id) => {
+            if(err) throw new Error("token not verified");
+            return id;
         });
     }else{
         throw new Error("token not valid");
     }
 }
 
-export default verifyToken;
+const handleToken = (req) => {
+    if(!req.headers || !req.headers.authorization) return { userID: null }
+    try{
+        const token = req.headers.authorization;
+        return verifyToken(token);
+    } catch(e){
+      throw new ApolloError(e, 500);
+    }
+  }
+
+export default handleToken;
 
 // export const verifyTokenAndAuthorization = (req, res , next) => {
 //     verifyToken(req, res, () => {
