@@ -8,6 +8,13 @@ import resolvers from "../graphql/resolvers/index.js";
 import typeDefs from "../graphql/typeDefs.js";
 import accessEnv from "../helpers/accessEnv.js";
 // import { applyMiddleware } from 'graphql-middleware';
+// import { connect } from '../helpers/rabbitMQ.js';
+
+// const CreateConnection = async() => {
+//   await connect();
+// }
+
+// CreateConnection();
 
 const startApolloServer = async (typeDefs, resolvers) => {
 
