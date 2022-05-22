@@ -1,45 +1,12 @@
 // import { User } from "../db/models/RegistrationModels";
+// import { RABBITMQ } from "../helpers/rabbitMQ.js";
 import login from "../services/login/loginService.js";
 import {registerManager, registerUser} from "../services/register/register.js"
 import { getUserDetails } from "../services/userDetails/userDetails.js";
+
+// const rabbitMQ = new RABBITMQ();
+
 const setupRoutes = app => {
-
-    // app.get("/userDetails", async (req,res,next) => {
-    //     console.log("UserDetails");
-    //     //validation
-    //     console.log(req.body);
-    //     try{
-    //         const user = await findUserDetailsByColumn({id: res.body.userId});
-    //         return res.json(user);
-    //     }catch(err){
-    //         throw new Error("Registration Failed");
-    //     }
-    // });
-
-    // app.login("/login", async (req,res,next) => {
-    //     console.log("login");
-    //     //validation
-    //     console.log(req.body);
-    //     const body = req.body;
-    //     try{
-    //         const user = await findUserDetailsByColumn(
-    //             {
-    //                 username: body.username,
-    //                 password: body.password
-    //             }
-    //         );
-    //         const token = ""
-    //         return res.json(user);
-    //     }catch(err){
-    //         throw new Error("Registration Failed");
-    //     }
-    // });
-
-    // const findUserDetailsByColumn = (filters) => {
-    //     return await User.find(
-    //         {where: filters}
-    //     );
-    // };
 
     app.post("/register", async (req,res,next) => {
         console.log("route register");

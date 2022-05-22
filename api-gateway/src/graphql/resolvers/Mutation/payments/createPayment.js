@@ -1,4 +1,4 @@
-import PaymentService from "../../../adapters/paymentService.js";
+import PaymentService from "../../../../adapters/paymentService.js";
 
 const createPaymentResolver = async(
     obj,
